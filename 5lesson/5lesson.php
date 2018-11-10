@@ -6,27 +6,57 @@
     <h1 style="text-align: center">5 lesson</h1>
 
     <?php
-    class Table
+
+    class Item
     {
       public $color;
+
+      public function show()
+      {
+        echo  $this->color;
+      }
+    }
+
+
+    class Table
+    extends Item
+    {
       public $legs;
 
       public function show()
       {
-        echo 'Hello, im table!';
-        echo 'У меня ' . $this->legs . ' ног';
+        echo 'Я потомок!';
+        parent::show();
       }
+
     }
 
     $table1 = new Table();
     $table1->color = 'red';
-    $table1->legs = '4';
     $table1->show();
 
-    $table2 = new Table();
-    $table2->color = 'green';
-    $table2->legs = '3';
-    var_dump($table2);
+
+
+    class Chair
+    {
+      protected $color;
+      public $legs;
+
+      public function __construct($color)
+      {
+        $this->color = $color;
+      }
+
+      public function show()
+      {
+        echo 'Я kreslo!';
+        echo $this->color;
+      }
+    }
+
+    $chair = new Chair('orange');
+    $chair->show();
+
     ?>
   </body>
 </html>
