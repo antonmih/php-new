@@ -14,7 +14,8 @@ class GuestBook
 
     public function __construct($file)
     {
-        $this->guest = file(__DIR__.'/'.$this->file = $file);
+        $this->file = __DIR__ . '/' . $file;
+        $this->guest = file($this->file);
     }
 
     public function getData()
@@ -24,12 +25,12 @@ class GuestBook
 
     public function append($text)
     {
-        $this->guest[] = "\n".$this->text = $text;
+        $this->guest[] = "\n" . $text;
     }
 
     public function save()
     {
-        file_put_contents(__DIR__.'/'.$this->file, $this->guest);
+        file_put_contents($this->file, $this->guest);
     }
 }
 
